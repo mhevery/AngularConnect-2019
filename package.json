@@ -1,0 +1,19 @@
+{
+  "name": "angularconnect-2019",
+  "version": "1.0.0",
+  "description": "Angular Connect 2019",
+  "scripts": {
+    "watch": "tsc --watch",
+    "postinstall": "mkdir -p v8/tools; cd v8; git init; git remote add -f origin git@github.com:v8/v8.git; git config core.sparseCheckout true; echo \"tools\" >> .git/info/sparse-checkout; git pull --depth=1 origin master; cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhevery/AngularConnect-2019"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^12.7.5",
+    "typescript": "^3.6.3"
+  }
+}
