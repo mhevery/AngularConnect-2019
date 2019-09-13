@@ -8,7 +8,7 @@ function benchB() { value = value === 0 ? 0 : 2; }
 function benchC() { value = value === 0 ? 0 : 3; }
 function benchD() { value = value === 0 ? 0 : 4; }
 
-benchmark('-------------------------- IGNORE --------------------------', benchA);
+//benchmark('-------------------------- IGNORE --------------------------', benchA);
 
 benchmark('A', benchA);
 benchmark('B', benchB);
