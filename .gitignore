@@ -1,4 +1,7 @@
 dist/
 v8/
-*.log
 node_modules/
+.vscode/
+v8.json
+package-lock.json
+*.log
