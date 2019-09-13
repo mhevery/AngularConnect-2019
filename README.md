@@ -39,8 +39,7 @@ node --trace-opt --trace-deopt ./dist/example1.js 10000
 
 Demonstrates stable numbers.
 ```
-node ./dist/example2.js 100000 1
-node ./dist/example2.js 100000 30
+node ./dist/example2.js
 ```
 
 
@@ -56,8 +55,8 @@ rm *.log; node --trace-ic ./dist/example3.js 10 10
 Demonstrates profiling. [profview](./v8/tools/profview/index.html)
 
 ```
-rm *.log; node --prof ./dist/example3.js; ./v8/tools/mac-tick-processor *.log 
-rm *.log; node --prof ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
+rm *.log; node --prof --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor *.log 
+rm *.log; node --prof --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
 rm *.log; node --prof --no-turbo-inlining --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
 rm *.log; node --prof --no-turbo-inlining ./dist/example3.js; node --prof-process *.log 
 ```

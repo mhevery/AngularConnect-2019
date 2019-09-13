@@ -1,5 +1,4 @@
 import {createBenchmark} from './benchmark';
-const benchmark = createBenchmark('example3');
 
 const ARRAY_SIZE = 10000;
 const OBJ_1 = [];  // {value:0, prop_0},  {value:0, prop_0}, {value:0,
@@ -35,83 +34,95 @@ function uniqueName(index: number, shapesCount: number): string {
   return 'prop_' + (index % shapesCount);
 }
 
-let sum = 0;
-let time1 = benchmark('1');
-while (time1()) {
-  for (let i = 0; i < OBJ_1.length; i++) {
-    sum += OBJ_1[i].value;
-  }
-}
+(function doBenchmarks(benchmark) {
+  let sum = 0;
+  (function benchmark1(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_1, benchmark('1'));
 
-let time2 = benchmark('2');
-while (time2()) {
-  for (let i = 0; i < OBJ_2.length; i++) {
-    sum += OBJ_2[i].value;
-  }
-}
+  (function benchmark2(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_2, benchmark('2'));
 
-let time3 = benchmark('3');
-while (time3()) {
-  for (let i = 0; i < OBJ_3.length; i++) {
-    sum += OBJ_3[i].value;
-  }
-}
+  (function benchmark3(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_3, benchmark('3'));
 
-let time4 = benchmark('4');
-while (time4()) {
-  for (let i = 0; i < OBJ_4.length; i++) {
-    sum += OBJ_4[i].value;
-  }
-}
+  (function benchmark4(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_4, benchmark('4'));
 
-let time5 = benchmark('5');
+  (function benchmark5(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_5, benchmark('5'));
 
-while (time5()) {
-  for (let i = 0; i < OBJ_5.length; i++) {
-    sum += OBJ_5[i].value;
-  }
-}
+  (function benchmark6(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_6, benchmark('6'));
 
-let time6 = benchmark('6');
-while (time6()) {
-  for (let i = 0; i < OBJ_6.length; i++) {
-    sum += OBJ_6[i].value;
-  }
-}
+  (function benchmark7(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_7, benchmark('7'));
 
-let time7 = benchmark('7');
-while (time7()) {
-  for (let i = 0; i < OBJ_7.length; i++) {
-    sum += OBJ_7[i].value;
-  }
-}
+  (function benchmark10(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_10, benchmark('10'));
 
-let time10 = benchmark('10');
-while (time10()) {
-  for (let i = 0; i < OBJ_10.length; i++) {
-    sum += OBJ_10[i].value;
-  }
-}
+  (function benchmark100(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_100, benchmark('100'));
 
-let time100 = benchmark('100');
-while (time100()) {
-  for (let i = 0; i < OBJ_100.length; i++) {
-    sum += OBJ_100[i].value;
-  }
-}
+  (function benchmark1000(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_1000, benchmark('1000'));
 
-let time1000 = benchmark('1000');
-while (time1000()) {
-  for (let i = 0; i < OBJ_1000.length; i++) {
-    sum += OBJ_1000[i].value;
-  }
-}
+  (function benchmark10000(array, timer) {
+    while (timer()) {
+      for (let i = 0; i < array.length; i++) {
+        sum += array[i].value;
+      }
+    }
+  })(OBJ_10000, benchmark('10000'));
 
-let time10000 = benchmark('10000');
-while (time10000()) {
-  for (let i = 0; i < OBJ_10000.length; i++) {
-    sum += OBJ_10000[i].value;
-  }
-}
-
-benchmark.report();
+  benchmark.report();
+})(createBenchmark('example3'));
