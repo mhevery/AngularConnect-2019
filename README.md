@@ -2,7 +2,7 @@
 
 [Slides](https://docs.google.com/presentation/d/1o5W1sOaQ0HaPqleGCWy8cukgM5NhhRZWpx2E6KKrc10) for [How we make Angular fast](https://www.angularconnect.com/talks#misko-hevery).
 
-[install v8 to get `d8`](install https://github.com/GoogleChromeLabs/jsvu#readme)
+[install v8 to get `d8`](https://github.com/GoogleChromeLabs/jsvu#readme)
 ```
 nvm install v12
 nvm use v12
@@ -61,4 +61,12 @@ rm *.log; node --prof --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-
 rm *.log; node --prof --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
 rm *.log; node --prof --no-turbo-inlining --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
 rm *.log; node --prof --no-turbo-inlining ./dist/example3.js; node --prof-process *.log 
+```
+
+## `example4.js`
+
+local patch https://github.com/angular/angular/pull/32691 until it gets merged.
+
+```
+./node_modules/.bin/http-server
 ```

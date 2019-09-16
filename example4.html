@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Example 4</title>
+    <script src="./node_modules/rxjs/bundles/rxjs.umd.js"></script>
+    <script src="./node_modules/@angular/compiler/bundles/compiler.umd.js"></script>
+    <script src="./node_modules/@angular/core/bundles/core.umd.js"></script>
+  </head>
+  <my-app></my-app>
+  <script>
+    class MyApp {
+      name = "World";
+      weight = "bold";
+    }
+
+    ng.core.ɵcompileComponent(MyApp, {
+      selector: `my-app`,
+      template: `<span style="color: blue" 
+                       [style.background-color]=" 'lightgray' "
+                       [style]="{'font-weight':weight}"
+                       >Hello {{name}}!</span>`
+    });
+
+    ng.core.ɵrenderComponent(MyApp, {
+
+    });
+  </script>
+</html>
