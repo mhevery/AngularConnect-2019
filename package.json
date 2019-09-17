@@ -5,7 +5,8 @@
   "scripts": {
     "watch": "tsc --watch",
     "serve": "http-server",
-    "postinstall": "mkdir -p v8/tools; cd v8; git init; git remote add -f origin git@github.com:v8/v8.git; git config core.sparseCheckout true; echo \"tools\" >> .git/info/sparse-checkout; git pull --depth=1 origin master; cd ..; ivy-ngcc"
+    "postinstall": "mkdir -p v8/tools; cd v8; git init; git remote add -f origin git@github.com:v8/v8.git; git config core.sparseCheckout true; echo \"tools\" >> .git/info/sparse-checkout; git pull --depth=1 origin master; cd ..; ivy-ngcc; npm run patch-ngcc-bug",
+    "patch-ngcc-bug": "sed -i -e 's|\\}, global\\.ng\\.core.$|}, global.ng.core, global.ng.core)|g' node_modules/@angular/common/bundles/common.umd.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +15,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@angular/common": "^9.0.0-next.6",
-    "@angular/compiler": "^9.0.0-next.6",
-    "@angular/compiler-cli": "^9.0.0-next.6",
-    "@angular/core": "^9.0.0-next.6",
+    "@angular/common": "github:angular/common-builds#master",
+    "@angular/compiler": "github:angular/compiler-builds#master",
+    "@angular/compiler-cli": "github:angular/compiler-cli-builds#master",
+    "@angular/core": "github:angular/core-builds#master",
     "@types/node": "^12.7.5",
     "http-server": "^0.11.1",
     "rxjs": "^6.5.3",

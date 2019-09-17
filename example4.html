@@ -8,18 +8,26 @@
   </head>
   <my-app></my-app>
   <script>
-    class MyApp {
+    const MyApp = ng.core.Component({
+      selector: `my-app`,
+      template: `
+        <span style="color: blue" 
+              [style.background-color]=" 'lightgray' "
+              [style]="{'font-weight':weight}"
+              >Hello {{name}}!</span>
+        <ul>
+          <li *ngFor="let i of [1]">{{i}}</li>
+        </ul>`
+    })(class MyApp {
       name = "World";
       weight = "bold";
-    }
-
-    ng.core.ɵcompileComponent(MyApp, {
-      selector: `my-app`,
-      template: `<span style="color: blue" 
-                       [style.background-color]=" 'lightgray' "
-                       [style]="{'font-weight':weight}"
-                       >Hello {{name}}!</span>`
+      list = 'abcdefghijklmnopqrstuvwxys'.split('');
     });
+
+    const MyAppModule = ng.core.NgModule({
+      declarations: [MyApp],
+      imports: [ng.common.CommonModule]
+    })(class MyAppModule {});
 
     ng.core.ɵrenderComponent(MyApp);
   </script>
