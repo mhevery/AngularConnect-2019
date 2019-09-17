@@ -8,14 +8,15 @@ nvm install v12
 nvm use v12
 npm install -g jsvu
 jsvu v8
-npm -l ~/.jsvu/v8 ~/.jsvu/d8
+ln -l ~/.jsvu/v8 ~/.jsvu/d8
 export D8_PATH=~/.jsvu
 ```
 
-to install and compile the repository
+to install, compile and serve the repository
 ```
 npm install
 npm run watch
+npm run server
 ```
 
 to get a list of `d8` options
@@ -47,26 +48,21 @@ node ./dist/example2.js
 
 ## `example3.js`
 
-Demonstrates inline-caching. [ip-processor](./v8/tools/ic-explorer.html)
+Demonstrates inline-caching. [ip-processor](http://localhost:8080/v8/tools/ic-explorer.html)
 
 ```
 node ./dist/example3.js
-rm *.log; node --trace-ic ./dist/example3.js 10 10
+rm *.log; node --trace-ic ./dist/example3.js
 ```
 
-Demonstrates profiling. [profview](./v8/tools/profview/index.html)
+Demonstrates profiling. [profview](http://localhost:8080/v8/tools/profview/index.html)
 
 ```
-rm *.log; node --prof --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor *.log 
+rm *.log; node --prof --no-turbo-inlining ./dist/example3.js; node --prof-process *.log 
 rm *.log; node --prof --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
 rm *.log; node --prof --no-turbo-inlining --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
-rm *.log; node --prof --no-turbo-inlining ./dist/example3.js; node --prof-process *.log 
 ```
 
-## `example4.js`
+## `example4.html`
 
-local patch https://github.com/angular/angular/pull/32691 until it gets merged.
-
-```
-./node_modules/.bin/http-server
-```
+Open [example4.html](http://localhost:8080/example4.html)
