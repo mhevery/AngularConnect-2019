@@ -32,6 +32,7 @@ Demonstrates inlining.
 node ./dist/example1.js 100000
 node --v8-options | code -
 node --trace-opt --trace-deopt ./dist/example1.js 10000000 | code -
+./node_modules/.bin/deoptigate ./dist/example1.js 10000000
 ```
 
 
@@ -40,6 +41,7 @@ node --trace-opt --trace-deopt ./dist/example1.js 10000000 | code -
 Demonstrates stable numbers.
 ```
 node ./dist/example2.js
+./node_modules/.bin/deoptigate ./dist/example2.js
 ```
 
 
@@ -50,6 +52,7 @@ Demonstrates inline-caching. [ip-processor](http://localhost:8080/v8/tools/ic-ex
 ```
 node ./dist/example3.js
 rm *.log; node --trace-ic ./dist/example3.js
+./node_modules/.bin/deoptigate ./dist/example3.js
 ```
 
 Demonstrates profiling. [profview](http://localhost:8080/v8/tools/profview/index.html)

@@ -11,8 +11,9 @@
     const MyApp = ng.core.Component({
       selector: `my-app`,
       template: `
-        <span style="color: blue" 
+        <span style="color: green" 
               [style.background-color]=" 'lightgray' "
+              [style.color]=" 'blue' "
               [style]="{'font-weight':weight}"
               >Hello {{name}}!</span>
         <ul>
