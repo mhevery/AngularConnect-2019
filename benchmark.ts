@@ -1,7 +1,7 @@
 import {performance} from 'perf_hooks';
 
-const MIN_SAMPLE_COUNT_NO_IMPROVEMENT = 5;
-const MIN_SAMPLE_DURATION = 50;
+const MIN_SAMPLE_COUNT_NO_IMPROVEMENT = 10;
+const MIN_SAMPLE_DURATION = 40;
 
 const UNITS = ['ms', 'us', 'ns', 'ps'];
 export interface Benchmark {
@@ -17,22 +17,13 @@ export interface Profile {
   noImprovementCount: number;
 }
 
-let emptyLoopCost_ms = -1;
-
 export function createBenchmark(benchmarkName: string): Benchmark  {
   const profiles: Profile[] = [];
-
-  if (emptyLoopCost_ms === -1) {
-    emptyLoopCost_ms = 0; // prevent infinite loop
-    const noop = createBenchmark('empty')('noop');
-    while(noop()){}
-    emptyLoopCost_ms = noop.bestTime;
-  }
 
   const benchmark = function Benchmark(profileName: string): Profile {
     let iterationCounter: number = 0;
     let timestamp: number = 0;
-    const profile: Profile = function Profile() {
+    const profile: Profile = function Profile(): boolean {
       if (iterationCounter === 0) {
         let runAgain = false;
         // if we reached the end of the iteration count than we should decide what to do next.
@@ -45,7 +36,7 @@ export function createBenchmark(benchmarkName: string): Benchmark  {
           profile.sampleCount++;
           // we came to an end of a sample, compute the time.
           const duration_ms = performance.now() - timestamp;
-          const iterationTime_ms = Math.max((duration_ms / profile.iterationCount) - emptyLoopCost_ms, 0);
+          const iterationTime_ms = Math.max((duration_ms / profile.iterationCount), 0);
           if (profile.bestTime > iterationTime_ms) {
             profile.bestTime = iterationTime_ms;
             profile.noImprovementCount = 0;

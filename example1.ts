@@ -1,4 +1,3 @@
-import {performance} from 'perf_hooks';
 const COUNT = Number.parseInt(process.argv[2] || "10");
 console.log(`Running ${COUNT} iterations.`);
 
@@ -19,10 +18,10 @@ benchmark('D', benchD);
 
 function benchmark(name: string, fn: ()=> void) {
   console.log('Starting:', name, '...');
-  const start = performance.now();
+  const start = Date.now();
   for(let i=0; i<COUNT; i++) {
     fn();
   }
-  const duration = performance.now() - start;
+  const duration = Date.now() - start;
   console.log('         ' , name, Number(duration/COUNT*1000*1000).toFixed(3), 'us');
 }

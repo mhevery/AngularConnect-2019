@@ -15,6 +15,7 @@ export D8_PATH=~/.jsvu
 to install, compile and serve the repository
 ```
 npm install
+npm run install-v8-tools
 npm run watch
 npm run server
 ```
@@ -28,13 +29,9 @@ node --v8-options
 
 Demonstrates inlining.
 ```
-node ./dist/example1.js 10
-node ./dist/example1.js 100
-node ./dist/example1.js 1000
-node ./dist/example1.js 10000
 node ./dist/example1.js 100000
-node --trace-turbo-inlining ./dist/example1.js 10000
-node --trace-opt --trace-deopt ./dist/example1.js 10000
+node --v8-options | code -
+node --trace-opt --trace-deopt ./dist/example1.js 10000000 | code -
 ```
 
 
