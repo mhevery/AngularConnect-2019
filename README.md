@@ -56,8 +56,7 @@ Demonstrates profiling. [profview](http://localhost:8080/v8/tools/profview/index
 
 ```
 rm *.log; node --prof --no-turbo-inlining ./dist/example3.js; node --prof-process *.log 
-rm *.log; node --prof --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
-rm *.log; node --prof --no-turbo-inlining --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
+rm *.log v8.json; node --prof --log-source-code ./dist/example3.js; ./v8/tools/mac-tick-processor --preprocess *.log > v8.json
 ```
 
 ## `example4.html`
