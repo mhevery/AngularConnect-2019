@@ -17,7 +17,7 @@ to install, compile and serve the repository
 npm install
 npm run install-v8-tools
 npm run watch
-npm run server
+npm run serve
 ```
 
 to get a list of `d8` options

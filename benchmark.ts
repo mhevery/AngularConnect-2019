@@ -1,7 +1,7 @@
 import {performance} from 'perf_hooks';
 
-const MIN_SAMPLE_COUNT_NO_IMPROVEMENT = 10;
-const MIN_SAMPLE_DURATION = 40;
+const MIN_SAMPLE_COUNT_NO_IMPROVEMENT = 100;
+const MIN_SAMPLE_DURATION = 2;
 
 const UNITS = ['ms', 'us', 'ns', 'ps'];
 export interface Benchmark {
