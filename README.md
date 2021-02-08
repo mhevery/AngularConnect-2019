@@ -2,6 +2,8 @@
 
 [Slides](https://docs.google.com/presentation/d/1o5W1sOaQ0HaPqleGCWy8cukgM5NhhRZWpx2E6KKrc10) for [How we make Angular fast](https://www.angularconnect.com/talks#misko-hevery).
 
+[![presentation video at AngularConnect 2019](./video.png)](https://www.youtube.com/embed/EqSRpkMRyY4)
+
 [install v8 to get `d8`](https://github.com/GoogleChromeLabs/jsvu#readme)
 ```
 nvm install v12
