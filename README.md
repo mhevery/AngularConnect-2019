@@ -9,7 +9,7 @@
 nvm install v12
 nvm use v12
 npm install -g jsvu
-jsvu v8
+jsvu --engines=v8
 ln -l ~/.jsvu/v8 ~/.jsvu/d8
 export D8_PATH=~/.jsvu
 ```
